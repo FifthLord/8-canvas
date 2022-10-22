@@ -1,0 +1,3 @@
+class ToolState {
+   constructor()
+}
