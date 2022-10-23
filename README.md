@@ -4,10 +4,10 @@ In this project, I learned how to use canvas on the example of a drawing applica
 
 # Dependencies:
 
-   -react
-   -node-sass
-   -mobx
-   -mobx-react-lite
+   -react\
+   -node-sass\
+   -mobx\
+   -mobx-react-lite\
 
 ## Available Scripts
 
