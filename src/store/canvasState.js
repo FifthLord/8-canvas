@@ -1,4 +1,4 @@
-const { makeAutoObservable } = require("mobx");
+import { makeAutoObservable } from "mobx";
 
 class CanvasState {
    canvas = null
