@@ -7,7 +7,7 @@ In this project, I learned how to use canvas on the example of a drawing applica
    -react\
    -node-sass\
    -mobx\
-   -mobx-react-lite\
+   -mobx-react-lite
 
 ## Available Scripts
 
