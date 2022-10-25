@@ -13,7 +13,6 @@ const Canvas = observer(() => {
       toolState.setTool(new Brush(canvasRef.current))
    }, [])
 
-
    return (
       <div className='canvas'>
          <canvas ref={canvasRef} width={600} height={400} />
