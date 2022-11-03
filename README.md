@@ -6,6 +6,7 @@ In this project, I learned how to use canvas on the example of a drawing applica
 
    -react\
    -react-router-dom\
+   -react-bootstrap\
    -node-sass\
    -mobx\
    -mobx-react-lite\
