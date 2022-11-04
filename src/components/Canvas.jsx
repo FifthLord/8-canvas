@@ -23,6 +23,8 @@ const Canvas = observer(() => {
    useEffect(() => {
       if (canvasState.username) {
          const socket = new WebSocket('ws://localhost:5000/')
+         canvasState.setSocket(socket)
+         canvasState.setSessionid(params.id)
          socket.onopen = () => {
             socket.send(JSON.stringify({
                id: params.id,
@@ -31,10 +33,22 @@ const Canvas = observer(() => {
             }))
          }
          socket.onmessage = (event) => {
-            console.log(event.data);
+            let msg = JSON.parse(event.data)
+            switch (msg.method) {
+               case "connection":
+                  console.log(`користувач ${msg.username} доєднався`);
+                  break
+               case "draw":
+                  drawHandler(msg)
+                  break
+            }
          }
       }
    }, [canvasState.username])
+
+   const drawHandler = (msg) => {
+
+   }
 
    const mouseDownHandler = () => {
       canvasState.pushToUndo(canvasRef.current.toDataURL())
