@@ -9,11 +9,14 @@ const PORT = process.env.PORT || 5000
 app.ws('/', (ws, req) => {
    console.log('Підключеня виконано')
    ws.send('Ти успішно законектився')
-   ws.on('message', (msq) => {
-      msq = JSON.parse(msq)
-      switch (msq.method) {
+   ws.on('message', (msg) => {
+      msg = JSON.parse(msg)
+      switch (msg.method) {
          case "connection":
-            connectionHandler(ws, msq)
+            connectionHandler(ws, msg)
+            break
+         case "connection":
+            broadcastConnection(ws, msg)
             break
       }
    })
@@ -21,15 +24,15 @@ app.ws('/', (ws, req) => {
 
 app.listen(PORT, () => console.log(`server started on PORT ${PORT}`))
 
-const connectionHandler = (ws, msq) => {
-   ws.id = msq.id
-   broadcastConnection(ws, msq)
+const connectionHandler = (ws, msg) => {
+   ws.id = msg.id
+   broadcastConnection(ws, msg)
 }
 
-const broadcastConnection = (ws, msq) => {
+const broadcastConnection = (ws, msg) => {
    aWss.clients.forEach(client => {
-      if (client.id === msq.id) {
-         client.send(`Користувач ${msq.username} доєднався`)
+      if (client.id === msg.id) {
+         client.send(JSON.stringify(msg))
       }
    })
 }
