@@ -32,7 +32,7 @@ const connectionHandler = (ws, msg) => {
 const broadcastConnection = (ws, msg) => {
    aWss.clients.forEach(client => {
       if (client.id === msg.id) {
-         client.send(`Користувач ${msg.username} підключився`)
+         client.send(JSON.stringify(msg))
       }
    })
 }
