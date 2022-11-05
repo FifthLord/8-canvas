@@ -17,8 +17,8 @@ class CanvasState {
       this.socket = socket;
    }
 
-   setSessionid(id) {
-      this.setSessionid = id;
+   setSessionId(id) {
+      this.sessionid = id;
    }
 
    setUsername(username) {

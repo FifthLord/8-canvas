@@ -14,18 +14,20 @@ const Canvas = observer(() => {
    const usernameRef = useRef()
    const [modal, setModal] = useState(true)
    const params = useParams()
+   // console.log(params);
 
    useEffect(() => {
       canvasState.setCanvas(canvasRef.current)
-      toolState.setTool(new Brush(canvasRef.current))
    }, [])
 
    useEffect(() => {
       if (canvasState.username) {
-         const socket = new WebSocket('ws://localhost:5000/')
+         const socket = new WebSocket('ws://localhost:3000/')
          canvasState.setSocket(socket)
-         canvasState.setSessionid(params.id)
+         canvasState.setSessionId(params.id)
+         toolState.setTool(new Brush(canvasRef.current, socket, params.id))
          socket.onopen = () => {
+            // console.log('Підключенно');
             socket.send(JSON.stringify({
                id: params.id,
                username: canvasState.username,
@@ -34,6 +36,7 @@ const Canvas = observer(() => {
          }
          socket.onmessage = (event) => {
             let msg = JSON.parse(event.data)
+            // console.log(msg)
             switch (msg.method) {
                case "connection":
                   console.log(`користувач ${msg.username} доєднався`);
@@ -41,13 +44,23 @@ const Canvas = observer(() => {
                case "draw":
                   drawHandler(msg)
                   break
+               default:
+                  break;
             }
          }
       }
    }, [canvasState.username])
 
    const drawHandler = (msg) => {
-
+      const figure = msg.figure
+      const ctx = canvasRef.current.getContext('2d')
+      switch (figure.type) {
+         case "brush":
+            Brush.draw(ctx, figure.x, figure.y)
+            break;
+         default:
+            break;
+      }
    }
 
    const mouseDownHandler = () => {

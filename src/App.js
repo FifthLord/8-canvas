@@ -2,7 +2,8 @@ import SettingBar from './components/SettingBar';
 import Canvas from "./components/Canvas"
 import Toolbar from './components/Toolbar';
 import './style/app.scss';
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
    return (
@@ -16,11 +17,19 @@ function App() {
       //    </Routes>
       // </div>
       <div className="app">
-         <Toolbar />
-         <SettingBar />
-         <Canvas />
-         <Navigate to={`f${(+new Date).toString(16)}`} />
+         <BrowserRouter>
+            <Routes>
+               <Route path='/:id' element={<><Toolbar /><SettingBar /><Canvas /></>} />
+               <Route path='/' element={<><Toolbar /><SettingBar /><Canvas /><Navigate to={`/f${(+new Date()).toString(16)}`} replace /></>} />
+            </Routes>
+         </BrowserRouter>
       </div>
+      // <div className="app">
+      //    <Toolbar />
+      //    <SettingBar />
+      //    <Canvas />
+      //    <Navigate to={`f${(+new Date).toString(16)}`} />
+      // </div>
    );
 }
 
