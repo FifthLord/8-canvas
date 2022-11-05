@@ -14,7 +14,7 @@ const Canvas = observer(() => {
    const usernameRef = useRef()
    const [modal, setModal] = useState(true)
    const params = useParams()
-   // console.log(params);
+   console.log(params);
 
    useEffect(() => {
       canvasState.setCanvas(canvasRef.current)
@@ -27,7 +27,7 @@ const Canvas = observer(() => {
          canvasState.setSessionId(params.id)
          toolState.setTool(new Brush(canvasRef.current, socket, params.id))
          socket.onopen = () => {
-            // console.log('Підключенно');
+            console.log('Підключенно');
             socket.send(JSON.stringify({
                id: params.id,
                username: canvasState.username,
@@ -36,10 +36,10 @@ const Canvas = observer(() => {
          }
          socket.onmessage = (event) => {
             let msg = JSON.parse(event.data)
-            // console.log(msg)
+            console.log(msg)
             switch (msg.method) {
                case "connection":
-                  console.log(`користувач ${msg.username} доєднався`);
+                  console.log(`Користувач ${msg.username} доєднався`);
                   break
                case "draw":
                   drawHandler(msg)

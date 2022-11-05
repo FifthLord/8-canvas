@@ -1,6 +1,6 @@
 # Paint app with canvas
 
-In this project, I learned how to use canvas on the example of a drawing application.
+In this project, I learned how to use canvas on the example of a drawing application for multiple users.
 
 # Dependencies:
 
@@ -16,7 +16,9 @@ In this project, I learned how to use canvas on the example of a drawing applica
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run:\
+client part: `npm start`\
+server part: `npm run dev`
 
 ### `npm start`
 
