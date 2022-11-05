@@ -7,8 +7,8 @@ const aWss = WSServer.getWss()
 const PORT = process.env.PORT || 3000
 
 app.ws('/', (ws, req) => {
-   console.log('Підключеня виконано')
-   ws.send('Ти успішно законектився')
+   // console.log('Підключеня виконано')
+   // ws.send('Ти успішно законектився')
    ws.on('message', (msg) => {
       msg = JSON.parse(msg)
       switch (msg.method) {
