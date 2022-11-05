@@ -4,7 +4,7 @@ const app = express()
 const WSServer = require('express-ws')(app)
 const aWss = WSServer.getWss()
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 app.ws('/', (ws, req) => {
    console.log('Підключеня виконано')
@@ -32,7 +32,7 @@ const connectionHandler = (ws, msg) => {
 const broadcastConnection = (ws, msg) => {
    aWss.clients.forEach(client => {
       if (client.id === msg.id) {
-         client.send(JSON.stringify(msg))
+         client.send(`Користувач ${msg.username} підключився`)
       }
    })
 }
