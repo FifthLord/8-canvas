@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Rect from '../tools/Rect';
 
 const Canvas = observer(() => {
    const canvasRef = useRef()
@@ -56,7 +57,10 @@ const Canvas = observer(() => {
       const ctx = canvasRef.current.getContext('2d')
       switch (figure.type) {
          case "brush":
-            Brush.draw(ctx, figure.x, figure.y)
+            Brush.draw(ctx, figure.x, figure.y, figure.color)
+            break;
+         case "rect":
+            Rect.staticDraw(ctx, figure.x, figure.y, figure.width, figure.height, figure.color)
             break;
          case "finish":
             ctx.beginPath()

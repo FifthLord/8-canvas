@@ -37,13 +37,15 @@ export default class Brush extends Tool {
             figure: {
                type: 'brush',
                x: e.pageX - e.target.offsetLeft,
-               y: e.pageY - e.target.offsetTop
+               y: e.pageY - e.target.offsetTop,
+               color: this.ctx.fillStyle
             }
          }))
       }
    }
 
-   static draw(ctx, x, y) {
+   static draw(ctx, x, y, color) {
+      ctx.strokeStyle = color
       ctx.lineTo(x, y)
       ctx.stroke()
    }
