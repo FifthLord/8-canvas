@@ -62,6 +62,9 @@ const Canvas = observer(() => {
          case "rect":
             Rect.staticDraw(ctx, figure.x, figure.y, figure.width, figure.height, figure.color)
             break;
+         case "eraser":
+            Brush.draw(ctx, figure.x, figure.y, figure.color)
+            break;
          case "finish":
             ctx.beginPath()
             break;

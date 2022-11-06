@@ -6,10 +6,25 @@ export default class Eraser extends Brush {
       super(canvas, socket, id);
    }
 
-   static draw(ctx, x, y) {
+   mouseMoveHandler(e) {
+      if (this.mouseDown) {
+         this.socket.send(JSON.stringify({
+            method: 'draw',
+            id: this.id,
+            figure: {
+               type: 'eraser',
+               x: e.pageX - e.target.offsetLeft,
+               y: e.pageY - e.target.offsetTop,
+               color: "#ffff"
+            }
+         }))
+      }
+   }
+
+   static draw(ctx, x, y, color) {
+      ctx.strokeStyle = color
       ctx.lineTo(x, y)
       ctx.stroke()
-      ctx.strokeStyle = "#ffff"
    }
    // draw(x, y) {
    //    this.ctx.lineTo(x, y)
