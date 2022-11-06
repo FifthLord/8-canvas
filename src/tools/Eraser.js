@@ -2,9 +2,9 @@
 import Brush from "./Brush";
 
 export default class Eraser extends Brush {
-   constructor(canvas, socket, id) {
-      super(canvas, socket, id);
-   }
+   // constructor(canvas, socket, id) {
+   //    super(canvas, socket, id);
+   // }
 
    mouseMoveHandler(e) {
       if (this.mouseDown) {
