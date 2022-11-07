@@ -8,10 +8,12 @@ In this project, I learned how to use canvas on the example of a drawing applica
    -react-router-dom\
    -react-bootstrap\
    -node-sass\
+   -axios\
    -mobx\
    -mobx-react-lite\
    -express\
    -express-ws\
+   -cors\
    -nodemon
 
 ## Available Scripts
