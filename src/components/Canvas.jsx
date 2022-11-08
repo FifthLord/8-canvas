@@ -70,7 +70,7 @@ const Canvas = observer(() => {
       const ctx = canvasRef.current.getContext('2d')
       switch (figure.type) {
          case "brush":
-            Brush.draw(ctx, figure.x, figure.y, figure.color)
+            Brush.draw(ctx, figure.x, figure.y, figure.color, figure.weight)
             break;
          case "rect":
             Rect.staticDraw(ctx, figure.x, figure.y, figure.width, figure.height, figure.color)
