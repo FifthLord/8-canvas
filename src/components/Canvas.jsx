@@ -3,13 +3,15 @@ import React, { useEffect, useRef } from 'react';
 import canvasState from '../store/canvasState';
 import toolState from '../store/toolState';
 import "../style/canvas.scss"
-import Brush from '../tools/Brush';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Rect from '../tools/Rect';
 import axios from 'axios'
+import Brush from '../tools/Brush';
+import Rect from '../tools/Rect';
+import Line from '../tools/Line';
+import Eraser from '../tools/Eraser';
 
 const Canvas = observer(() => {
    const canvasRef = useRef()
@@ -74,10 +76,10 @@ const Canvas = observer(() => {
             Rect.staticDraw(ctx, figure.x, figure.y, figure.width, figure.height, figure.color)
             break;
          case "eraser":
-            Brush.draw(ctx, figure.x, figure.y, figure.color)
+            Eraser.draw(ctx, figure.x, figure.y, figure.color)
             break;
          case "line":
-            Brush.draw(ctx, figure.cx, figure.cy, figure.sx, figure.sy, figure.color)
+            Line.staticDraw(ctx, figure.cx, figure.cy, figure.sx, figure.sy, figure.color)
             break;
          case "finish":
             ctx.beginPath()

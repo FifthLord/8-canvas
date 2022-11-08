@@ -37,9 +37,10 @@ export default class Line extends Tool {
    }
    mouseMoveHandler(e) {
       if (this.mouseDown) {
-         let currentX = e.pageX - e.target.offsetLeft;
-         let currentY = e.pageY - e.target.offsetTop;
-         this.draw(this.startX, this.startY, currentX, currentY)
+         //*при додавані CX CY в метод "line" не забути проставити this. перед всіма current
+         this.currentX = e.pageX - e.target.offsetLeft;
+         this.currentY = e.pageY - e.target.offsetTop;
+         this.draw(this.startX, this.startY, this.currentX, this.currentY)
       }
    }
 
