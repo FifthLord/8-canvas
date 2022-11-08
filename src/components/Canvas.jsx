@@ -20,6 +20,7 @@ const Canvas = observer(() => {
 
    useEffect(() => {
       canvasState.setCanvas(canvasRef.current)
+      //3001 тому що 3000 занятий сервером
       axios.get(`http://localhost:3001/image?id=${params.id}`)
          .then(response => {
             const img = new Image()
@@ -74,6 +75,9 @@ const Canvas = observer(() => {
             break;
          case "eraser":
             Brush.draw(ctx, figure.x, figure.y, figure.color)
+            break;
+         case "line":
+            Brush.draw(ctx, figure.cx, figure.cy, figure.sx, figure.sy, figure.color)
             break;
          case "finish":
             ctx.beginPath()
