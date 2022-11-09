@@ -23,13 +23,14 @@ const Canvas = observer(() => {
    useEffect(() => {
       canvasState.setCanvas(canvasRef.current)
       //3001 тому що 3000 занятий сервером
+      let ctx = canvasRef.current.getContext('2d')
       axios.get(`http://localhost:3001/image?id=${params.id}`)
          .then(response => {
             const img = new Image()
             img.src = response.data
             img.onload = () => {
-               this.ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
-               this.ctx.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height)
+               ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+               ctx.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height)
             }
          })
    }, [])
