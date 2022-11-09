@@ -15,14 +15,14 @@ export default class Eraser extends Brush {
                type: 'eraser',
                x: e.pageX - e.target.offsetLeft,
                y: e.pageY - e.target.offsetTop,
-               color: "#ffff"
+               colorS: "#ffff"
             }
          }))
       }
    }
 
-   static draw(ctx, x, y, color) {
-      ctx.strokeStyle = color
+   static draw(ctx, x, y, colorS) {
+      ctx.strokeStyle = colorS
       ctx.lineTo(x, y)
       ctx.stroke()
    }
