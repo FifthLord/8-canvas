@@ -26,7 +26,7 @@ export default class Rect extends Tool {
             height: this.height,
             color: this.ctx.fillStyle,
             colorS: this.ctx.strokeStyle,
-            weight: this.ctx.lineWidth
+            width: this.ctx.lineWidth
          }
       }))
    }
@@ -59,10 +59,10 @@ export default class Rect extends Tool {
          this.ctx.stroke()
       }
    }
-   static staticDraw(ctx, x, y, w, h, color, weight, colorS) {
+   static staticDraw(ctx, x, y, w, h, color, width, colorS) {
       ctx.fillStyle = color
       ctx.strokeStyle = colorS
-      ctx.lineWidth = weight
+      ctx.lineWidth = width
       ctx.beginPath()
       ctx.rect(x, y, w, h)
       ctx.fill()

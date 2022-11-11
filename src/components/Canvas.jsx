@@ -12,6 +12,7 @@ import Brush from '../tools/Brush';
 import Rect from '../tools/Rect';
 import Line from '../tools/Line';
 import Eraser from '../tools/Eraser';
+import Circle from '../tools/Circle';
 
 const Canvas = observer(() => {
    const canvasRef = useRef()
@@ -71,16 +72,19 @@ const Canvas = observer(() => {
       const ctx = canvasRef.current.getContext('2d')
       switch (figure.type) {
          case "brush":
-            Brush.draw(ctx, figure.x, figure.y, figure.colorS, figure.weight)
+            Brush.draw(ctx, figure.x, figure.y, figure.colorS, figure.width)
             break;
          case "rect":
-            Rect.staticDraw(ctx, figure.x, figure.y, figure.width, figure.height, figure.color, figure.colorS, figure.weight)
+            Rect.staticDraw(ctx, figure.x, figure.y, figure.width, figure.height, figure.color, figure.colorS, figure.width)
             break;
          case "eraser":
             Eraser.draw(ctx, figure.x, figure.y, figure.colorS)
             break;
          case "line":
-            Line.staticDraw(ctx, figure.cx, figure.cy, figure.sx, figure.sy, figure.colorS, figure.weight)
+            Line.staticDraw(ctx, figure.cx, figure.cy, figure.sx, figure.sy, figure.colorS, figure.width)
+            break;
+         case "circle":
+            Circle.staticDraw(ctx, figure.sX, figure.sY, figure.r, figure.sA, figure.eA, figure.color, figure.width, figure.colorS)
             break;
          case "finish":
             ctx.beginPath()

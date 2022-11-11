@@ -29,7 +29,7 @@ const Toolbar = () => {
       <div className='toolbar'>
          <button className='toolbar__bth brush' onClick={() => toolState.setTool(new Brush(canvasState.canvas, canvasState.socket, canvasState.sessionid))} />
          <button className='toolbar__bth rect' onClick={() => toolState.setTool(new Rect(canvasState.canvas, canvasState.socket, canvasState.sessionid))} />
-         <button className='toolbar__bth circle' onClick={() => toolState.setTool(new Circle(canvasState.canvas))} />
+         <button className='toolbar__bth circle' onClick={() => toolState.setTool(new Circle(canvasState.canvas, canvasState.socket, canvasState.sessionid))} />
          <button className='toolbar__bth eraser' onClick={() => toolState.setTool(new Eraser(canvasState.canvas, canvasState.socket, canvasState.sessionid))} />
          <button className='toolbar__bth line' onClick={() => toolState.setTool(new Line(canvasState.canvas, canvasState.socket, canvasState.sessionid))} />
          <input onChange={e => changeColor(e)} style={{ marginLeft: 10 }} type="color" />

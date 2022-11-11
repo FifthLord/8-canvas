@@ -25,7 +25,7 @@ export default class Line extends Tool {
             sx: this.startX,
             sy: this.startY,
             colorS: this.ctx.strokeStyle,
-            weight: this.ctx.lineWidth
+            width: this.ctx.lineWidth
          }
       }))
    }
@@ -57,9 +57,9 @@ export default class Line extends Tool {
          this.ctx.stroke()
       }
    }
-   static staticDraw(ctx, sx, sy, cx, cy, colorS, weight) {
+   static staticDraw(ctx, sx, sy, cx, cy, colorS, width) {
       ctx.strokeStyle = colorS
-      ctx.lineWidth = weight
+      ctx.lineWidth = width
       ctx.beginPath()
       ctx.moveTo(sx, sy)
       ctx.lineTo(cx, cy)
