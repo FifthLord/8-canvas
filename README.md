@@ -1,6 +1,8 @@
 # Paint app with canvas
 
-In this project, I learned how to use canvas on the example of a drawing application for multiple users.
+In this project I learned how to use a canvas using a multi-user drawing program.\
+With the function "redo", "undo", "Save".\
+And also the possibility for new users to start from a saved canvas.
 
 # Dependencies:
 
