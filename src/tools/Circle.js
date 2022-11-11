@@ -22,9 +22,9 @@ export default class Circle extends Tool {
             type: 'circle',
             sX: this.startX,
             sY: this.startY,
-            radius: this.radius,
-            startAngle: this.startAngle,
-            endAngle: this.endAngle,
+            r: this.radius,
+            sA: this.startAngle,
+            eA: this.endAngle,
             color: this.ctx.fillStyle,
             width: this.ctx.lineWidth,
             colorS: this.ctx.strokeStyle
