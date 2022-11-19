@@ -38,7 +38,7 @@ export default class Brush extends Tool {
                type: 'brush',
                x: e.pageX - e.target.offsetLeft,
                y: e.pageY - e.target.offsetTop,
-               colorS: this.ctx.fillStyle,
+               colorS: this.ctx.strokeStyle,
                width: this.ctx.lineWidth
             }
          }))
